@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: #191D28;
+  background-size: cover;
+  color: white;
+}
+
+/* Landing Page */
+
+.LandingPage {
+  height: 100vh;
+}
+
+.titleContainer {
+  padding-top: 6rem;
+  padding-bottom: 2rem;
+}
+
+.title {
+  font-size: 3.3rem;
+  color: #1864ab;
+}
+
+.titleSpan {
+  color: white;
+}
+
+.subTitle {
+  font-size: 1.3rem;
+  margin-top: 5px;
+}
+
+.paragraphTitle {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.paragraph {
+  width: 40rem;
+  margin: auto;
+  font-size: 1.3rem;
+}
+
+.nameForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 40rem;
+  margin: 4rem auto;
+}
+
+.nameLabel {
+  font-size: 1.5rem;
+}
+
+.nameInput {
+  padding: 7px;
+  width: 12rem;
+  margin: 1rem auto;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  border: 1px solid black;
+  outline: none;
+}
+
+.submitNameButton {
+  width: 12rem;
+  margin: 1rem auto;
+  padding: 0.6rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #1864ab;
+  color: white;
+}
+
+.submitNameButton:hover {
+  background-color: #2574bd;
+}
