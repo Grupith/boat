@@ -1,5 +1,6 @@
 import './App.css';
 import LandingPage from './Components/LandingPage';
+import Dashboard from './Components/Dashboard';
 import { useState } from 'react';
 
 
@@ -9,7 +10,8 @@ function App() {
 
   return (
     <div className="App">
-     <LandingPage firstName={firstName} setFirstName={setFirstName} />
+     {/* <LandingPage firstName={firstName} setFirstName={setFirstName} /> */}
+     <Dashboard />
     </div>
   );
 }
