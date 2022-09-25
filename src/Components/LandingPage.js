@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function LandingPage({ firstName, setFirstName}) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
   }
+  
+  // Set the first name in localStroage
+   useEffect(() => {
+    localStorage.setItem('firstName', JSON.stringify(firstName))
+  }, [firstName])  
 
   return (
     <div className='LandingPage'>
@@ -18,10 +23,10 @@ export default function LandingPage({ firstName, setFirstName}) {
         <p className='paragraph'> Are you someone to use excel sheets to track your monthly bills?
            Well Lifeboat offers a clean UI to easily manage your finances.</p>
         <form className='nameForm' onSubmit={handleSubmit}>
-            <label for='name' className='nameLabel'>Enter your First Name</label>
+            <label htmlFor='name' className='nameLabel'>Enter your First Name</label>
             <input type='text' className='nameInput' onChange={e => setFirstName(e.target.value)}/>
             <h3>{firstName}</h3>
-            <button type='submit' className='submitNameButton'>Create Budget</button>
+            <Link to='/dashboard'><button type='submit' className='submitNameButton'>Create Budget</button></Link>
         </form>
     </div>
   )

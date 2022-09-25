@@ -2,11 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import MonthlyBills from './MonthlyBills'
 
-//TODO: Create Sum for monthly total, Change price to number only format
-//TODO: Add routing, add first name
-//TODO: LocalStorage
-
-export default function Dashboard() {
+export default function Dashboard({ firstName }) {
 
   const [totalBills, setTotalBills] = useState([])
   const [name, setName] = useState('')
@@ -49,9 +45,9 @@ export default function Dashboard() {
   return (
     <div className='dashboard'>
       <div className='controlBoard'>
-        <h1 className='dashboardTitle'>Dylans <span className='dashboardTitleSpan'>Lifeboat</span></h1>
+        <h1 className='dashboardTitle'>{firstName}'s <span className='dashboardTitleSpan'>Lifeboat</span></h1>
         <h2 className='monthlyBillsLabel'>Monthly Total</h2>
-        <span className='monthlyBillsAmount'>{totalBillsAmount}</span>
+        <span className='monthlyBillsAmount'>${totalBillsAmount}</span>
         {!showCreateButton && <span className='addBill' onClick={() => setShowCreateButton(true)}>Add Bill</span>}
         {showCreateButton && <span className='addBill' onClick={() => setShowCreateButton(false)}>Cancel</span>}
       </div>
