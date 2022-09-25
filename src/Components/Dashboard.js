@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import MonthlyBills from './MonthlyBills'
 import { MdDelete } from "react-icons/md";
 
+//TODO: Create Sum for monthly total, Change price to number only format
+//TODO: Add routing, add first name
+//TODO: LocalStorage
 
 export default function Dashboard() {
 
@@ -25,6 +29,7 @@ export default function Dashboard() {
     setName('')
     setDate('')
     setAmount('')
+    setShowCreateButton(false)
   }
 
   return (
@@ -38,20 +43,9 @@ export default function Dashboard() {
       </div>
       <div className='contentContainer'>
         <h2 className='monthlyBillsTitle'>Monthly Bills</h2>
-        <div className='bill'>
-          <span>Amazon</span>
-          <span>15th</span>
-          <span>$10.52</span>
-          <MdDelete className='deleteIcon' />
-        </div>
-        {totalBills && totalBills.map(bill => <div key={bill.id} className='bill'>
-          <span>{bill.name}</span>
-          <span>{bill.date}</span>
-          <span>${bill.amount}</span>
-          <MdDelete className='deleteIcon'/>
-        </div>)}
+        {totalBills && totalBills.map(bill => <MonthlyBills key={bill.id} id={bill.id} name={bill.name} date={bill.date} amount={bill.amount} className='bill' totalBills={totalBills} setTotalBills={setTotalBills}/>)}
         {showCreateButton && <form className='createBill' onSubmit={handleCreateBill}>
-          <input required type='text' placeholder='Name' onChange={e => setName(e.target.value)} />
+          <input autoFocus required type='text' placeholder='Name' onChange={e => setName(e.target.value)} />
           <input required type='text' placeholder='Date' onChange={e => setDate(e.target.value)} />
           <input required type='text' placeholder='Price' onChange={e => setAmount(e.target.value)} />
           <button type='submit'>Add</button>
