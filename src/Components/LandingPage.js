@@ -25,7 +25,7 @@ export default function LandingPage({ firstName, setFirstName}) {
         <form className='nameForm' onSubmit={handleSubmit}>
             <label htmlFor='name' className='nameLabel'>Enter your First Name</label>
             <input type='text' className='nameInput' onChange={e => setFirstName(e.target.value)}/>
-            <h3>{firstName}</h3>
+            <h3>{firstName && firstName}</h3>
             <Link to='/dashboard'><button type='submit' className='submitNameButton'>Create Budget</button></Link>
         </form>
     </div>

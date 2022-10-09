@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 import MonthlyBills from './MonthlyBills'
 
-export default function Dashboard({ firstName }) {
+export default function Dashboard({ firstName , setFirstName, totalBills , setTotalBills}) {
 
-  const [totalBills, setTotalBills] = useState([])
   const [name, setName] = useState('')
   const [date, setDate] = useState('')
   const [amount, setAmount] = useState('')
@@ -42,6 +42,11 @@ export default function Dashboard({ firstName }) {
     setTotalBillsAmount(sum)
   }, [sum])
 
+  const handleReset = () => {
+    localStorage.clear();
+    setFirstName('')
+  }
+
   return (
     <div className='dashboard'>
       <div className='controlBoard'>
@@ -50,10 +55,11 @@ export default function Dashboard({ firstName }) {
         <span className='monthlyBillsAmount'>${totalBillsAmount}</span>
         {!showCreateButton && <span className='addBill' onClick={() => setShowCreateButton(true)}>Add Bill</span>}
         {showCreateButton && <span className='addBill' onClick={() => setShowCreateButton(false)}>Cancel</span>}
+        <Link to='/' className='addBill'><span onClick={handleReset}>Reset</span></Link>
       </div>
       <div className='contentContainer'>
-        <h2 className='monthlyBillsTitle'>Monthly Bills</h2>
-        {totalBills && totalBills.map(bill => <MonthlyBills key={bill.id} id={bill.id} name={bill.name} date={bill.date} amount={bill.amount} className='bill' totalBills={totalBills} setTotalBills={setTotalBills}/>)}
+        <h2 className='monthlyBillsTitle'>Monthly Bills ({totalBills.length})</h2>
+        {totalBills && totalBills.map(bill => <MonthlyBills  id={bill.id} name={bill.name} date={bill.date} amount={bill.amount} className='bill' totalBills={totalBills} setTotalBills={setTotalBills}/>)}
         
         {showCreateButton && <form className='createBill' onSubmit={handleCreateBill}>
           <input autoFocus required type='text' placeholder='Name' onChange={e => setName(e.target.value)} />

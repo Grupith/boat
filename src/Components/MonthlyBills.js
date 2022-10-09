@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MdDelete } from "react-icons/md";
 
 export default function MonthlyBills({id , name , date , amount , totalBills , setTotalBills}) {
@@ -9,6 +9,12 @@ export default function MonthlyBills({id , name , date , amount , totalBills , s
     })
     setTotalBills(updatedBills)
   }
+
+  // Save to localStorage when bill is created
+  useEffect(() => {
+    localStorage.setItem('totalBills', JSON.stringify(totalBills))
+  }, [totalBills])
+  
   return (
     <div className='bill'>
         <span>{name}</span>
